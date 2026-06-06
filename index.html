@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemGala Rewards Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+}
+
+body{
+background:url('back.jpg') center center/cover no-repeat fixed;
+color:#fff;
+overflow-x:hidden;
+}
+
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
+padding-bottom:100px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:30px 0;
+}
+
+.hero img{
+width:100%;
+max-width:420px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.hero h1{
+font-family:"Playfair Display", serif;
+font-weight:700;
+letter-spacing:0.6px;
+line-height:1.2;
+font-size:2.4rem;
+}
+
+.hero p{
+margin-top:15px;
+line-height:1.7;
+opacity:0.9;
+}
+
+/* GLASS */
+.glass{
+background:rgba(0,0,0,.28);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:25px;
+margin-top:25px;
+backdrop-filter:blur(8px);
+}
+
+/* CTA BUTTON — framed pill with side chevron */
+.cta{
+display:inline-flex;
+align-items:stretch;
+margin-top:25px;
+text-decoration:none;
+font-weight:700;
+color:#001a10;
+background:linear-gradient(135deg,rgba(0,255,136,0.9),rgba(0,194,255,0.9));
+border-radius:50px;
+border:2px solid rgba(255,255,255,0.35);
+padding:4px;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 12px 30px rgba(0,255,136,0.3),
+inset 0 0 12px rgba(255,255,255,0.35),
+0 0 25px rgba(0,194,255,0.25);
+}
+
+.cta-inner{
+display:flex;
+align-items:center;
+background:rgba(0,0,0,0.25);
+border-radius:46px 8px 8px 46px;
+padding:12px 22px 12px 26px;
+gap:14px;
+}
+
+.cta-icon{
+font-size:1.2rem;
+}
+
+.cta-divider{
+width:1.5px;
+height:22px;
+background:rgba(255,255,255,0.5);
+}
+
+.cta-text{
+letter-spacing:1px;
+text-transform:uppercase;
+font-size:0.95rem;
+}
+
+.cta-arrow{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 22px;
+background:rgba(255,255,255,0.25);
+border-radius:8px 46px 46px 8px;
+margin-left:2px;
+font-size:1.3rem;
+font-weight:900;
+}
+
+.cta::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.45),
+transparent
+);
+transform:skewX(-25deg);
+animation:shine 4s infinite;
+z-index:2;
+pointer-events:none;
+}
+
+@keyframes shine{
+100%{
+left:160%;
+}
+}
+
+/* HEADINGS */
+h2{
+font-family:"Playfair Display", serif;
+font-weight:600;
+letter-spacing:0.8px;
+font-size:1.4rem;
+position:relative;
+display:inline-block;
+margin-bottom:10px;
+}
+
+h2::after{
+content:"";
+display:block;
+width:55%;
+height:3px;
+margin-top:6px;
+border-radius:10px;
+background:linear-gradient(90deg,#00ff88,#00c2ff);
+opacity:0.9;
+}
+
+/* BONUS HEADING */
+.bonus h2{
+font-family:"Great Vibes", cursive;
+font-size:2.4rem;
+color:#00ff88;
+text-align:center;
+}
+
+/* BONUS */
+.bonus{
+text-align:center;
+}
+
+.bonus-amount{
+font-size:3rem;
+font-weight:800;
+color:#00ff88;
+margin:10px 0;
+}
+
+/* STEPS */
+.step{
+background:rgba(255,255,255,.05);
+padding:15px;
+border-radius:15px;
+margin-top:10px;
+}
+
+/* PROGRESS */
+.progress{
+height:18px;
+background:rgba(255,255,255,.1);
+border-radius:999px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.progress-fill{
+height:100%;
+width:78.35%;
+background:linear-gradient(90deg,#00ff88,#44ffb5,#00ff88);
+}
+
+/* TESTIMONIES */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border-radius:20px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h3{
+font-family:"Plus Jakarta Sans", sans-serif;
+font-weight:600;
+}
+
+.amount{
+color:#00ff88;
+font-size:1.5rem;
+font-weight:700;
+margin:10px 0;
+}
+
+/* FIXED BUTTON — different framed style with double border */
+.fixed-btn{
+position:fixed;
+left:15px;
+right:15px;
+bottom:15px;
+z-index:999;
+display:flex;
+align-items:center;
+justify-content:space-between;
+text-decoration:none;
+font-weight:700;
+color:#001a10;
+background:linear-gradient(135deg,rgba(0,255,136,0.95),rgba(0,194,255,0.95));
+border-radius:20px;
+border:2px solid rgba(255,255,255,0.4);
+padding:6px;
+overflow:hidden;
+box-shadow:
+0 15px 35px rgba(0,255,136,0.35),
+inset 0 0 15px rgba(255,255,255,0.4),
+0 0 30px rgba(0,194,255,0.3);
+}
+
+.fixed-inner{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:14px;
+border:1.5px dashed rgba(0,26,16,0.35);
+border-radius:14px;
+letter-spacing:0.8px;
+text-transform:uppercase;
+font-size:0.95rem;
+}
+
+.fixed-badge{
+background:rgba(0,26,16,0.85);
+color:#00ff88;
+padding:14px 18px;
+border-radius:14px;
+margin-left:6px;
+font-size:0.9rem;
+letter-spacing:1px;
+}
+
+.fixed-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.45),
+transparent
+);
+transform:skewX(-25deg);
+animation:shine 4s infinite;
+pointer-events:none;
+}
+
+@media(min-width:768px){
+.fixed-btn{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+<img src="d.jpg">
+<h1>Earn Rewards While Playing Games on GemGala</h1>
+<p>Discover games, connect with the community and unlock rewards.</p>
+
+<a class="cta" href="https://getblock.me/u/25506591">
+<span class="cta-inner">
+<span class="cta-icon">💎</span>
+<span class="cta-divider"></span>
+<span class="cta-text">Start Earning</span>
+</span>
+<span class="cta-arrow">➜</span>
+</a>
+</section>
+
+<!-- BONUS -->
+<section class="glass bonus">
+
+<h2>Welcome Bonus Activation</h2>
+
+<div class="bonus-amount">$15</div>
+
+<p style="margin-bottom:15px;">
+Complete these steps to unlock your welcome bonus:
+</p>
+
+<div class="step">✨ Create Your Account</div>
+<div class="step">📸 Complete Face Verification</div>
+<div class="step">🎮 Play Your First Game</div>
+
+<div class="progress">
+<div class="progress-fill"></div>
+</div>
+
+<p style="margin-top:10px;">
+1567 / 2000 Claimed
+</p>
+
+<p style="color:#00ff88;">
+433 Slots Remaining
+</p>
+
+</section>
+
+<!-- WHAT IS GEMGALA -->
+<section class="glass">
+<h2>What Is GemGala</h2>
+<p style="margin-top:15px;line-height:1.8;">
+GemGala is a social gaming platform where users play a single core game,
+connect with others, and participate in reward-based entertainment activities.
+</p>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="glass">
+
+<h2>Recent Member Earnings</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="d1.jpg">
+<div class="card-content">
+<h3>Sarah M.</h3>
+<div class="amount">$20.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d2.jpg">
+<div class="card-content">
+<h3>Michael T.</h3>
+<div class="amount">$10.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d3.jpg">
+<div class="card-content">
+<h3>Arjun K.</h3>
+<div class="amount">₹2,438</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d4.jpg">
+<div class="card-content">
+<h3>Amina B.</h3>
+<div class="amount">$10.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- FIXED CTA -->
+<a class="fixed-btn" href="https://getblock.me/u/25506591">
+<span class="fixed-inner">🎁 Claim  Bonus</span>
+<span class="fixed-badge">$15</span>
+</a>
+
+</body>
+</html>
