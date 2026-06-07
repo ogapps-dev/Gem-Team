@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemGala Rewards Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+}
+
+body{
+background:url('back.jpg') center center/cover no-repeat fixed;
+color:#fff;
+overflow-x:hidden;
+}
+
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
+padding-bottom:100px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:30px 0;
+}
+
+.hero img{
+width:100%;
+max-width:420px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.hero h1{
+font-family:"Playfair Display", serif;
+font-weight:700;
+letter-spacing:0.6px;
+line-height:1.2;
+font-size:2.4rem;
+}
+
+.hero p{
+margin-top:15px;
+line-height:1.7;
+opacity:0.9;
+}
+
+/* GLASS */
+.glass{
+background:rgba(0,0,0,.28);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:25px;
+margin-top:25px;
+backdrop-filter:blur(8px);
+}
+
+/* STRUCTURED OUTLINE ICONS - For non-diamond emojis */
+.struc{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:32px;
+height:32px;
+margin-right:12px;
+position:relative;
+}
+
+.struc svg{
+width:22px;
+height:22px;
+stroke:currentColor;
+stroke-width:1.5;
+stroke-linecap:round;
+stroke-linejoin:round;
+fill:none;
+opacity:0.9;
+}
+
+.struc::before{
+content:"";
+position:absolute;
+inset:-4px;
+border:1px solid rgba(0,255,136,0.15);
+border-radius:50%;
+background:rgba(0,255,136,0.02);
+}
+
+/* CTA BUTTON — Green to Greenish-Cyan */
+.cta{
+display:inline-flex;
+align-items:stretch;
+margin-top:25px;
+text-decoration:none;
+font-weight:700;
+color:#001a10;
+background:linear-gradient(135deg,rgba(0,255,136,0.95),rgba(0,194,170,0.95));
+border-radius:50px;
+border:2px solid rgba(255,255,255,0.4);
+padding:4px;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 12px 30px rgba(0,255,136,0.35),
+0 0 25px rgba(0,194,170,0.25),
+inset 0 0 12px rgba(255,255,255,0.4);
+}
+
+.cta-inner{
+display:flex;
+align-items:center;
+background:rgba(0,0,0,0.15);
+border-radius:46px 8px 8px 46px;
+padding:12px 22px 12px 26px;
+gap:14px;
+}
+
+/* EMERALD DIAMOND EMOJI - Not outlined, full color */
+.cta-icon{
+font-size:1.4rem;
+line-height:1;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+color:#00c853; /* Emerald green */
+filter:drop-shadow(0 0 3px rgba(0,200,80,0.5));
+}
+
+.cta-divider{
+width:1.5px;
+height:22px;
+background:rgba(0,26,16,0.3);
+}
+
+.cta-text{
+letter-spacing:1px;
+text-transform:uppercase;
+font-size:0.95rem;
+}
+
+.cta-arrow{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 22px;
+background:rgba(255,255,255,0.3);
+border-radius:8px 46px 46px 8px;
+margin-left:2px;
+font-size:1.3rem;
+font-weight:900;
+color:#001a10;
+}
+
+.cta::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.5),
+transparent
+);
+transform:skewX(-25deg);
+animation:shine 4s infinite;
+z-index:2;
+pointer-events:none;
+}
+
+@keyframes shine{
+100%{
+left:160%;
+}
+}
+
+/* HEADINGS - Original Cyan */
+h2{
+font-family:"Playfair Display", serif;
+font-weight:600;
+letter-spacing:0.8px;
+font-size:1.4rem;
+position:relative;
+display:inline-block;
+margin-bottom:10px;
+}
+
+h2::after{
+content:"";
+display:block;
+width:55%;
+height:3px;
+margin-top:6px;
+border-radius:10px;
+background:linear-gradient(90deg,#00ff88,#00c2ff);
+opacity:0.9;
+}
+
+/* BONUS HEADING - Original Cyan */
+.bonus h2{
+font-family:"Great Vibes", cursive;
+font-size:2.4rem;
+color:#00ff88;
+text-align:center;
+filter:drop-shadow(0 0 10px rgba(0,255,136,0.3));
+}
+
+/* BONUS */
+.bonus{
+text-align:center;
+}
+
+.bonus-amount{
+font-size:3rem;
+font-weight:800;
+background:linear-gradient(135deg,#00ff88,#00c2ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* STEPS */
+.step{
+background:rgba(255,255,255,.05);
+padding:15px;
+border-radius:15px;
+margin-top:10px;
+display:flex;
+align-items:center;
+border:1px solid rgba(0,255,136,0.1);
+color:rgba(255,255,255,0.95);
+font-weight:500;
+}
+
+/* PROGRESS - Original Cyan */
+.progress{
+height:18px;
+background:rgba(255,255,255,.1);
+border-radius:999px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.progress-fill{
+height:100%;
+width:78.35%;
+background:linear-gradient(90deg,#00ff88,#00c2ff,#00ff88);
+box-shadow:0 0 10px rgba(0,255,136,0.3);
+}
+
+/* TESTIMONIES */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border-radius:20px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h3{
+font-family:"Plus Jakarta Sans", sans-serif;
+font-weight:600;
+}
+
+.amount{
+font-size:1.5rem;
+font-weight:700;
+background:linear-gradient(135deg,#00ff88,#00c2ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+margin:10px 0;
+}
+
+/* FIXED BUTTON — Green to Greenish-Cyan */
+.fixed-btn{
+position:fixed;
+left:15px;
+right:15px;
+bottom:15px;
+z-index:999;
+display:flex;
+align-items:center;
+justify-content:space-between;
+text-decoration:none;
+font-weight:700;
+color:#001a10;
+background:linear-gradient(135deg,rgba(0,255,136,0.98),rgba(0,194,170,0.98));
+border-radius:20px;
+border:2px solid rgba(255,255,255,0.45);
+padding:6px;
+overflow:hidden;
+box-shadow:
+0 15px 35px rgba(0,255,136,0.4),
+0 0 30px rgba(0,194,170,0.3),
+inset 0 0 15px rgba(255,255,255,0.45);
+}
+
+.fixed-inner{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:14px;
+border:1.5px dashed rgba(0,26,16,0.35);
+border-radius:14px;
+letter-spacing:0.8px;
+text-transform:uppercase;
+font-size:0.95rem;
+}
+
+.fixed-badge{
+background:rgba(0,26,16,0.85);
+color:#00ff88;
+padding:14px 18px;
+border-radius:14px;
+margin-left:6px;
+font-size:0.9rem;
+letter-spacing:1px;
+font-weight:800;
+box-shadow:0 0 10px rgba(0,255,136,0.3);
+}
+
+.fixed-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.5),
+transparent
+);
+transform:skewX(-25deg);
+animation:shine 4s infinite;
+pointer-events:none;
+}
+
+/* OUTLINE GIFT ICON */
+.fixed-icon{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:20px;
+height:20px;
+}
+
+.fixed-icon svg{
+width:18px;
+height:18px;
+stroke:#001a10;
+stroke-width:1.5;
+stroke-linecap:round;
+stroke-linejoin:round;
+fill:none;
+}
+
+/* STATS SECTION - Original Cyan */
+.stats{
+display:flex;
+justify-content:space-around;
+align-items:center;
+text-align:center;
+padding:35px 20px;
+margin-top:30px;
+background:linear-gradient(135deg,rgba(0,0,0,0.4),rgba(0,0,0,0.25));
+border:1px solid rgba(0,255,136,0.15);
+}
+
+.stat-item{
+flex:1;
+}
+
+.stat-number{
+font-size:2.2rem;
+font-weight:800;
+background:linear-gradient(135deg,#00ff88 0%,#00c2ff 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+line-height:1;
+margin-bottom:8px;
+filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.stat-label{
+font-size:0.85rem;
+opacity:0.9;
+text-transform:uppercase;
+letter-spacing:1.5px;
+font-weight:500;
+color:rgba(255,255,255,0.8);
+}
+
+.stat-divider{
+width:1px;
+height:50px;
+background:linear-gradient(180deg,transparent,rgba(0,255,136,0.4),transparent);
+}
+
+@media(min-width:768px){
+.fixed-btn{display:none;}
+}
+
+@media(max-width:600px){
+.stats{
+flex-direction:column;
+gap:25px;
+}
+.stat-divider{
+width:80%;
+height:1px;
+background:linear-gradient(90deg,transparent,rgba(0,255,136,0.4),transparent);
+}
+.stat-number{font-size:1.9rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+<img src="d.jpg">
+<h1>Earn Rewards While Playing Games on GemGala</h1>
+<p>Discover games, connect with the community and unlock rewards.</p>
+
+<a class="cta" href="https://getblock.me/u/25506591">
+<span class="cta-inner">
+<!-- EMERALD DIAMOND EMOJI -->
+<span class="cta-icon">💎</span>
+<span class="cta-divider"></span>
+<span class="cta-text">Start Earning</span>
+</span>
+<span class="cta-arrow">➜</span>
+</a>
+</section>
+
+<!-- BONUS -->
+<section class="glass bonus">
+
+<h2>Welcome Bonus Activation</h2>
+
+<div class="bonus-amount">$15</div>
+
+<p style="margin-bottom:15px;">
+Complete these steps to unlock your welcome bonus:
+</p>
+
+<!-- SPARKLES OUTLINE -->
+<div class="step">
+  <span class="struc">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z"/>
+      <path d="M19 5L19.5 6.5L21 7L19.5 7.5L19 9L18.5 7.5L17 7L18.5 6.5L19 5Z"/>
+    </svg>
+  </span>
+  Create Your Account
+</div>
+
+<!-- CAMERA OUTLINE -->
+<div class="step">
+  <span class="struc">
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="6" width="18" height="14" rx="3"/>
+      <circle cx="12" cy="13" r="4"/>
+      <circle cx="17.5" cy="9.5" r="1.5"/>
+      <path d="M8 6L9.5 4H14.5L16 6"/>
+    </svg>
+  </span>
+  Complete Face Verification
+</div>
+
+<!-- GAME CONTROLLER OUTLINE -->
+<div class="step">
+  <span class="struc">
+    <svg viewBox="0 0 24 24">
+      <path d="M2 10C2 8.89543 2.89543 8 4 8H20C21.1046 8 22 8.89543 22 10V14C22 17.3137 19.3137 20 16 20C14.6593 20 13.3994 19.5066 12.5 18.6716C11.6006 19.5066 10.3407 20 9 20C5.68629 20 3 17.3137 3 14V10Z"/>
+      <circle cx="7" cy="13" r="1.5"/>
+      <circle cx="17" cy="13" r="1.5"/>
+      <path d="M7 11.5V14.5M5.5 13H8.5"/>
+    </svg>
+  </span>
+  Play Your First Game
+</div>
+
+<div class="progress">
+<div class="progress-fill"></div>
+</div>
+
+<p style="margin-top:10px;">
+1567 / 2000 Claimed
+</p>
+
+<p style="color:#00ff88;">
+433 Slots Remaining
+</p>
+
+</section>
+
+<!-- WHAT IS GEMGALA -->
+<section class="glass">
+<h2>What Is GemGala</h2>
+<p style="margin-top:15px;line-height:1.8;">
+GemGala is a social gaming platform where users play a single core game,
+connect with others, and participate in reward-based entertainment activities.
+</p>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="glass">
+
+<h2>Recent Member Earnings</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="d1.jpg">
+<div class="card-content">
+<h3>Sarah M.</h3>
+<div class="amount">$20.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d2.jpg">
+<div class="card-content">
+<h3>Michael T.</h3>
+<div class="amount">$10.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d3.jpg">
+<div class="card-content">
+<h3>Arjun K.</h3>
+<div class="amount">₹2,438</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="d4.jpg">
+<div class="card-content">
+<h3>Amina B.</h3>
+<div class="amount">$10.00</div>
+<p>Earned from gameplay activity.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS SECTION -->
+<section class="glass stats">
+<div class="stat-item">
+<div class="stat-number">10M+</div>
+<div class="stat-label">Downloads</div>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-number">3M+</div>
+<div class="stat-label">Active Users</div>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-number">134+</div>
+<div class="stat-label">Countries</div>
+</div>
+</section>
+
+</div>
+
+<!-- FIXED CTA -->
+<a class="fixed-btn" href="https://getblock.me/u/25506591">
+<span class="fixed-inner">
+  <!-- GIFT OUTLINE ICON -->
+  <span class="fixed-icon">
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="8" width="18" height="13" rx="2"/>
+      <path d="M12 8V21M3 12H21"/>
+      <path d="M7 8C7 6.5 8 5 10 5C11.5 5 12 6 12 6C12 6 12.5 5 14 5C16 5 17 6.5 17 8H7Z"/>
+    </svg>
+  </span>
+  Claim Your Bonus
+</span>
+<span class="fixed-badge">$15</span>
+</a>
+
+</body>
+</html>
